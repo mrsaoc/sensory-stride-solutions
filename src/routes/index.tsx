@@ -5,8 +5,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Dra. Sylvia | Guia Sensorial da Fascite Plantar — 14 dias" },
       { name: "description", content: "Descubra o Método de Reintrodução Sensorial da Pisada® e reduza a dor da primeira pisada em até 14 dias." },
-      { property: "og:title", content: "Guia Sensorial da Fascite Plantar" },
-      { property: "og:description", content: "Método completo de 14 dias criado por Dra. Sylvia — mais de 23 anos ajudando pessoas a caminhar sem dor." },
+      { property: "og:title", content: "Dra. Sylvia | Guia Sensorial da Fascite Plantar — 14 dias" },
+      { property: "og:description", content: "Descubra o Método de Reintrodução Sensorial da Pisada® e reduza a dor da primeira pisada em até 14 dias." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
