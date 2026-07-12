@@ -1,12 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import draSylvia from "@/assets/dra-sylvia.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Dra. Sylvia | Guia Sensorial da Fascite Plantar — 14 dias" },
       { name: "description", content: "Descubra o Método de Reintrodução Sensorial da Pisada® e reduza a dor da primeira pisada em até 14 dias." },
-      { property: "og:title", content: "Dra. Sylvia | Guia Sensorial da Fascite Plantar — 14 dias" },
-      { property: "og:description", content: "Descubra o Método de Reintrodução Sensorial da Pisada® e reduza a dor da primeira pisada em até 14 dias." },
+      { property: "og:title", content: "Dra. Sylvia | Guia Sensorial da Fascite Plantar" },
+      { property: "og:description", content: "Método de Reintrodução Sensorial da Pisada® — reduza a dor da primeira pisada em até 14 dias." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -14,10 +15,16 @@ export const Route = createFileRoute("/")({
   component: SalesPage,
 });
 
-const CTA = ({ children = "Quero acessar o Guia Sensorial agora e começar meus 14 dias" }: { children?: string }) => (
-  <a href="#oferta" className="btn-primary btn-primary-hover text-base md:text-lg">
+const CTA = ({ children = "Quero começar meus 14 dias", small = false }: { children?: string; small?: boolean }) => (
+  <a href="#oferta" className={`btn-primary btn-primary-hover ${small ? "text-sm px-6 py-3" : "text-base md:text-lg"}`}>
     {children} <span aria-hidden>→</span>
   </a>
+);
+
+const Eyebrow = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.28em] font-semibold text-[color:var(--gold)]">
+    <span className="h-px w-8 bg-[color:var(--gold)]" /> {children}
+  </span>
 );
 
 const Check = () => (
@@ -26,236 +33,342 @@ const Check = () => (
 
 function SalesPage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className="bg-background text-foreground overflow-x-hidden">
       {/* Topbar */}
       <div className="surface-forest text-center text-xs md:text-sm py-2 px-4">
-        Dra. Sylvia · Mais de 23 anos ajudando pessoas a recuperarem a liberdade de caminhar
+        Dra. Sylvia · +23 anos ajudando pessoas a recuperarem a liberdade de caminhar
       </div>
 
-      {/* HERO */}
-      <header className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 surface-sand opacity-70" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_60%)]" />
-        <div className="mx-auto max-w-5xl px-6 pt-16 pb-20 md:pt-24 md:pb-28 text-center">
-          <span className="inline-block rounded-full border border-[color:var(--forest)]/20 bg-white/60 px-4 py-1.5 text-xs md:text-sm font-medium text-[color:var(--forest)]">
-            Método de Reintrodução Sensorial da Pisada®
-          </span>
-          <h1 className="mt-6 font-display text-4xl md:text-6xl leading-[1.05] text-[color:var(--forest)]">
-            Por que sua <em className="italic text-[color:var(--gold)]">fascite plantar</em> continua voltando — mesmo depois de alongamentos, remédios e palmilhas
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-[color:var(--forest)]/80">
-            Descubra como ajudar seu corpo a reduzir a dor da primeira pisada em até <strong>14 dias</strong>, mesmo que você já tenha tentado de tudo sem resultado duradouro.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <CTA />
+      {/* HERO — split with photo on gradient */}
+      <header className="relative">
+        {/* soft sand backdrop */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[color:var(--sand)]/60 via-background to-background" />
+        <div className="mx-auto max-w-6xl px-6 pt-10 md:pt-16 pb-16 md:pb-24 grid gap-10 md:gap-12 md:grid-cols-[1.1fr_1fr] items-center">
+          {/* Copy */}
+          <div className="relative">
+            <Eyebrow>Método Sensorial da Pisada®</Eyebrow>
+            <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] md:text-6xl md:leading-[1.02] text-[color:var(--forest)]">
+              Sua <em className="italic text-[color:var(--gold)] not-italic md:italic">fascite plantar</em> não é só inflamação.
+              <span className="block mt-2 text-[color:var(--forest)]/80 font-display italic text-2xl md:text-3xl">É um ciclo — e ele pode ser interrompido.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base md:text-lg text-foreground/75 leading-relaxed">
+              Reduza a dor da primeira pisada em até <strong className="text-[color:var(--forest)]">14 dias</strong>, com o método que ajudou centenas de pessoas a caminharem de novo — sem medo, sem remédio contínuo.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <CTA />
+              <div className="text-xs text-foreground/60 leading-relaxed">
+                Acesso imediato · Garantia 7 dias<br />Conteúdo digital vitalício
+              </div>
+            </div>
+            {/* trust row */}
+            <div className="mt-10 flex items-center gap-6 text-sm">
+              <div>
+                <div className="font-display text-3xl text-[color:var(--forest)]">23+</div>
+                <div className="text-xs uppercase tracking-wider text-foreground/60">anos de prática</div>
+              </div>
+              <div className="h-10 w-px bg-[color:var(--forest)]/15" />
+              <div>
+                <div className="font-display text-3xl text-[color:var(--forest)]">14</div>
+                <div className="text-xs uppercase tracking-wider text-foreground/60">dias de método</div>
+              </div>
+              <div className="h-10 w-px bg-[color:var(--forest)]/15" />
+              <div>
+                <div className="font-display text-3xl text-[color:var(--forest)]">100%</div>
+                <div className="text-xs uppercase tracking-wider text-foreground/60">em casa</div>
+              </div>
+            </div>
           </div>
-          <p className="mt-4 text-xs text-[color:var(--forest)]/60">Acesso imediato · Garantia de 7 dias · Conteúdo digital vitalício</p>
+
+          {/* Photo card */}
+          <div className="relative">
+            <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-[color:var(--forest)] via-[color:var(--forest)]/85 to-[color:var(--gold)]/70 blur-2xl opacity-40" />
+            <div className="relative rounded-[2rem] overflow-hidden bg-gradient-to-b from-[color:var(--forest)] to-[color:var(--forest)]/80 shadow-2xl">
+              <img
+                src={draSylvia}
+                alt="Dra. Sylvia — fisioterapeuta e podóloga"
+                width={1024}
+                height={1280}
+                className="w-full h-auto object-cover"
+              />
+              {/* floating badge */}
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+                <div className="rounded-2xl bg-white/95 backdrop-blur px-4 py-3 shadow-lg">
+                  <div className="font-display text-lg text-[color:var(--forest)] leading-tight">Dra. Sylvia</div>
+                  <div className="text-[11px] uppercase tracking-widest text-[color:var(--forest)]/70">Fisio · Podóloga</div>
+                </div>
+                <div className="rounded-full bg-[color:var(--gold)] text-[color:var(--forest)] font-bold text-xs px-4 py-2 shadow-lg">
+                  +23 anos
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
-      {/* Reconhece essa cena */}
-      <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="font-display text-3xl md:text-5xl text-[color:var(--forest)]">Você reconhece essa cena?</h2>
-        <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/85">
-          <p>O alarme toca. Você tenta colocar o pé no chão — e vem aquela fisgada no calcanhar. Como se estivesse pisando em um prego. Você segura a respiração, espera um pouco, tenta de novo. A dor está lá. Igual à de ontem. Igual à da semana passada. Igual à do mês passado.</p>
-          <p>Durante o dia você evita caminhar mais do que o necessário. Para diversas vezes para descansar. Deixa de ir ao passeio com a família. Abre mão da caminhada matinal. Depende de anti-inflamatório só para funcionar.</p>
-          <p>E no fim do dia, a sensação mais pesada não é a do pé — é saber que amanhã vai começar tudo de novo.</p>
-          <p>Você já tentou palmilhas sem orientação adequada. Já fez alongamentos do YouTube. Já tomou anti-inflamatório até enjoar. Já descansou por semanas. Já trocou de tênis diversas vezes. A dor melhora por alguns dias — e volta. Sempre volta.</p>
-          <p className="text-[color:var(--forest)] font-medium">E a cada vez que volta, bate aquela sensação horrível: <em>"Será que eu vou ter que viver assim para sempre?"</em></p>
-        </div>
-      </section>
-
-      {/* O problema não está onde você imagina */}
-      <section className="surface-forest">
-        <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-          <h2 className="font-display text-3xl md:text-5xl text-[color:var(--sand)]">O problema não está onde você imagina</h2>
-          <div className="mt-8 space-y-5 text-lg leading-relaxed text-white/85">
-            <p>A maioria das pessoas trata a fascite plantar como se fosse apenas uma inflamação no pé. Toma remédio para inflamação. Descansa o pé. Usa palmilha para absorver impacto. E melhora — por um tempo.</p>
-            <p>Mas a dor volta. Por quê?</p>
-            <p>Porque o que mantém a fascite plantar ativa na maior parte dos casos não é só a inflamação. É o <strong className="text-[color:var(--gold)]">ciclo de proteção</strong> que o seu sistema nervoso criou ao longo do tempo.</p>
-            <p>Quando você sente dor repetidamente, seu corpo aprende a proteger aquela região. Muda a forma como você pisa. Altera a distribuição de carga. Cria tensões compensatórias. E esse padrão se perpetua — mesmo quando a inflamação já foi embora.</p>
-            <p>Ninguém te explicou isso. E é por isso que os tratamentos convencionais resolvem o sintoma, mas não interrompem o ciclo.</p>
+      {/* PROBLEMA — cena reconhecível, cards */}
+      <section className="relative py-20 md:py-28">
+        <div className="absolute right-[-8%] top-10 -z-10 h-72 w-72 rounded-full bg-[color:var(--gold)]/10 blur-3xl" />
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <Eyebrow>Você reconhece?</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl text-[color:var(--forest)]">
+              A primeira pisada do dia — <em className="italic text-[color:var(--gold)]">e o medo que vem junto</em>
+            </h2>
           </div>
-        </div>
-      </section>
 
-      {/* Método */}
-      <section className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <div className="text-center">
-          <span className="text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] font-semibold">Conheça</span>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl text-[color:var(--forest)]">
-            Método de Reintrodução Sensorial da Pisada<sup className="text-xl">®</sup>
-          </h2>
-        </div>
-        <div className="mt-10 space-y-5 text-lg leading-relaxed text-foreground/85">
-          <p>Desenvolvido pela Dra. Sylvia após mais de 23 anos de experiência clínica, o método não trata apenas a inflamação — ele atua na causa funcional que mantém a dor ativa.</p>
-          <p>Através de <strong>vivências sensoriais guiadas</strong>, <strong>adaptação progressiva da carga</strong> e <strong>reorganização da forma como seu corpo percebe o movimento</strong>, o método ajuda o sistema nervoso a sair do estado de proteção e permitir que você caminhe novamente sem medo e sem dor.</p>
-          <p>Não é mais um protocolo de alongamento. Não é mais uma palmilha. É uma abordagem diferente — porque o problema é diferente do que te contaram.</p>
-        </div>
-      </section>
-
-      {/* Dra Sylvia */}
-      <section className="surface-sand">
-        <div className="mx-auto max-w-5xl px-6 py-20 md:py-24">
-          <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] items-center">
-            <div className="mx-auto aspect-[3/4] w-full max-w-xs rounded-2xl bg-gradient-to-br from-[color:var(--forest)] to-[color:var(--forest)]/70 flex items-end p-6 shadow-xl">
-              <div className="text-[color:var(--sand)]">
-                <div className="font-display text-2xl">Dra. Sylvia</div>
-                <div className="text-sm opacity-80">Fisioterapeuta & Podóloga</div>
-              </div>
-            </div>
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl text-[color:var(--forest)]">Quem está por trás deste método</h2>
-              <ul className="mt-6 space-y-3 text-[color:var(--forest)]/85 text-lg">
-                <li className="flex gap-3"><Check /><span>Mais de <strong>23 anos</strong> de experiência clínica</span></li>
-                <li className="flex gap-3"><Check /><span><strong>Centenas de pacientes</strong> atendidos</span></li>
-                <li className="flex gap-3"><Check /><span>Metodologia própria baseada em prática real</span></li>
-                <li className="flex gap-3"><Check /><span>Criadora do Método de Reintrodução Sensorial da Pisada®</span></li>
-              </ul>
-
-              <figure className="mt-8 rounded-xl bg-white/70 p-6 border border-[color:var(--forest)]/10">
-                <blockquote className="italic text-[color:var(--forest)]">
-                  “Melhorei na primeira semana. Acordei sem aquela dor horrível no calcanhar e consegui caminhar o dia inteiro sem medo de piorar.”
-                </blockquote>
-                <figcaption className="mt-3 text-sm text-[color:var(--forest)]/70">— Cliente do método</figcaption>
-              </figure>
-            </div>
-          </div>
-          <div className="mt-12 flex justify-center"><CTA /></div>
-        </div>
-      </section>
-
-      {/* Oferta */}
-      <section id="oferta" className="mx-auto max-w-4xl px-6 py-20 md:py-28">
-        <div className="text-center">
-          <span className="text-xs uppercase tracking-[0.25em] text-[color:var(--gold)] font-semibold">O Programa</span>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl text-[color:var(--forest)]">
-            O Guia Sensorial da Fascite Plantar
-          </h2>
-          <p className="mt-3 text-lg text-foreground/70">Método completo de 14 dias</p>
-        </div>
-
-        <p className="mt-8 text-lg leading-relaxed text-foreground/85">
-          Um programa prático, progressivo e acessível para você entender a origem da sua dor, reduzir a sobrecarga que mantém o problema ativo e recuperar mais conforto e confiança ao caminhar — tudo no conforto da sua casa, sem equipamentos ou consultas presenciais.
-        </p>
-
-        <ul className="mt-10 grid gap-4 md:grid-cols-2">
-          {[
-            "E-book completo \"O Guia Sensorial\" — o método passo a passo aplicado na prática clínica",
-            "Módulo: Entendendo a Fascite Plantar — o que realmente acontece no seu corpo",
-            "Método de Reintrodução Sensorial da Pisada — 6 vivências sensoriais guiadas",
-            "Guia de Calçados e Hábitos Diários — evite os erros que mantêm a dor ativa",
-            "Plano de Aplicação de 14 Dias — cronograma simples para implementar sem perder o ritmo",
-            "Orientações sobre adaptação da carga e recuperação dos tecidos",
-            "Acesso vitalício ao conteúdo digital",
-          ].map((item) => (
-            <li key={item} className="flex gap-3 rounded-xl border border-[color:var(--forest)]/10 bg-white p-4">
-              <Check /><span className="text-foreground/85">{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Bônus */}
-        <div className="mt-16">
-          <h3 className="font-display text-2xl md:text-3xl text-[color:var(--forest)] text-center">Bônus exclusivos</h3>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
             {[
-              { t: "Bônus 1 — Checklist Diário de Recuperação", d: "Um guia diário simples que mostra exatamente o que fazer em cada etapa do método, sem espaço para dúvidas." },
-              { t: "Bônus 2 — Erros que Agravam a Fascite Plantar", d: "Os comportamentos mais comuns que sabotam a recuperação e como evitá-los desde o primeiro dia." },
-              { t: "Bônus 3 — Aula: Voltar a Caminhar com Segurança", d: "Como recuperar a confiança nos movimentos de forma gradual e sem risco." },
-            ].map((b) => (
-              <div key={b.t} className="rounded-2xl border border-[color:var(--gold)]/40 bg-gradient-to-b from-[color:var(--sand)]/50 to-white p-6">
-                <div className="text-2xl">🎁</div>
-                <div className="mt-3 font-display text-lg text-[color:var(--forest)]">{b.t}</div>
-                <p className="mt-2 text-sm text-foreground/75">{b.d}</p>
+              { t: "A fisgada matinal", d: "Você coloca o pé no chão e trava. Espera. Tenta de novo. A dor está lá — igual à de ontem." },
+              { t: "Rotina interrompida", d: "Menos caminhadas, menos passeios, mais anti-inflamatório só pra funcionar." },
+              { t: "O ciclo que volta", d: "Palmilha, alongamento, descanso. Melhora dias. Volta sempre. E a pergunta: “vou viver assim?”" },
+            ].map((c, i) => (
+              <div key={c.t} className="relative rounded-2xl border border-[color:var(--forest)]/10 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div className="font-display text-4xl text-[color:var(--gold)]/60">0{i + 1}</div>
+                <div className="mt-2 font-display text-xl text-[color:var(--forest)]">{c.t}</div>
+                <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{c.d}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Preço */}
-        <div className="mt-16 rounded-3xl border border-[color:var(--forest)]/15 bg-white p-8 md:p-12 shadow-xl text-center">
-          <p className="text-sm uppercase tracking-widest text-[color:var(--gold)] font-semibold">Investimento</p>
-          <div className="mt-4 flex items-baseline justify-center gap-2">
-            <span className="font-display text-6xl md:text-7xl text-[color:var(--forest)]">R$ 168</span>
-            <span className="text-2xl text-[color:var(--forest)]/70">,00</span>
+      {/* CAUSA — surface forest, split */}
+      <section className="surface-forest relative overflow-hidden">
+        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-[color:var(--gold)]/10 blur-3xl" />
+        <div className="absolute -right-32 -bottom-32 h-96 w-96 rounded-full bg-[color:var(--gold)]/5 blur-3xl" />
+        <div className="relative mx-auto max-w-5xl px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <Eyebrow>A causa real</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl text-[color:var(--sand)]">
+              Não é só inflamação. É <em className="italic text-[color:var(--gold)]">proteção</em>.
+            </h2>
+            <p className="mt-6 text-white/80 leading-relaxed">
+              Seu sistema nervoso aprendeu a proteger o pé que dói. Ele muda sua pisada, cria tensões compensatórias — e o ciclo se mantém, mesmo sem inflamação.
+            </p>
+            <p className="mt-4 text-white/80 leading-relaxed">
+              Por isso remédio, palmilha e descanso melhoram — <strong className="text-[color:var(--gold)]">mas nunca resolvem</strong>.
+            </p>
           </div>
-          <p className="mt-2 text-sm text-foreground/60">ou em parcelas no cartão de crédito</p>
-
-          <div className="mt-8 flex justify-center"><CTA /></div>
-          <p className="mt-4 text-xs text-foreground/60">Acesso imediato após a confirmação do pagamento</p>
-        </div>
-
-        {/* Valor percebido */}
-        <div className="mt-16">
-          <h3 className="font-display text-2xl md:text-3xl text-[color:var(--forest)] text-center">Quanto vale recuperar a liberdade de caminhar?</h3>
-          <ul className="mt-8 mx-auto max-w-2xl space-y-2 text-foreground/85">
-            <li className="flex justify-between border-b border-dashed py-2"><span>Consulta com fisioterapeuta especializado</span><span className="font-medium">R$ 250 – 500</span></li>
-            <li className="flex justify-between border-b border-dashed py-2"><span>Avaliação biomecânica</span><span className="font-medium">R$ 200 – 600</span></li>
-            <li className="flex justify-between border-b border-dashed py-2"><span>Consulta podológica</span><span className="font-medium">R$ 150 – 300</span></li>
-            <li className="flex justify-between border-b border-dashed py-2"><span>Orientação sobre calçados adequados</span><span className="font-medium">R$ 100 – 300</span></li>
-            <li className="flex justify-between border-b border-dashed py-2"><span>Estratégias de recuperação funcional</span><span className="font-medium">23+ anos de prática</span></li>
-            <li className="flex justify-between py-3 text-[color:var(--forest)] font-semibold text-lg"><span>Valor percebido total</span><span>&gt; R$ 1.000</span></li>
-          </ul>
+          <div className="relative">
+            <div className="rounded-2xl border border-[color:var(--gold)]/30 bg-white/5 backdrop-blur p-6 md:p-8">
+              <div className="text-[11px] uppercase tracking-widest text-[color:var(--gold)] font-semibold">O ciclo que ninguém te explicou</div>
+              <ul className="mt-5 space-y-4 text-white/90 text-sm">
+                {["Dor repetida", "Corpo protege", "Padrão de pisada muda", "Tensões compensatórias", "Dor continua"].map((s, i) => (
+                  <li key={s} className="flex items-center gap-4">
+                    <span className="grid h-8 w-8 place-items-center rounded-full border border-[color:var(--gold)]/50 text-[color:var(--gold)] text-xs font-bold">{i + 1}</span>
+                    <span>{s}</span>
+                    {i < 4 && <span className="ml-auto text-[color:var(--gold)]/60">↓</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Garantia */}
-      <section className="surface-forest">
-        <div className="mx-auto max-w-3xl px-6 py-20 md:py-24 text-center">
-          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-4 border-[color:var(--gold)]">
-            <span className="font-display text-3xl text-[color:var(--gold)]">7</span>
-          </div>
-          <h2 className="mt-6 font-display text-3xl md:text-4xl text-[color:var(--sand)]">Garantia incondicional de 7 dias</h2>
-          <p className="mt-6 text-lg text-white/85 leading-relaxed">
-            Acesse todo o conteúdo. Analise cada módulo. Aplique as primeiras vivências. Se por qualquer motivo você concluir que o programa não é para você, basta enviar uma mensagem dentro de 7 dias após a compra e receberá <strong>100% do valor de volta</strong>. Sem questionamentos. Sem burocracia.
+      {/* MÉTODO */}
+      <section className="relative py-20 md:py-28">
+        <div className="absolute left-[-10%] top-20 -z-10 h-80 w-80 rounded-full bg-[color:var(--sand)]/60 blur-3xl" />
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <Eyebrow>Conheça</Eyebrow>
+          <h2 className="mt-4 font-display text-3xl md:text-5xl text-[color:var(--forest)]">
+            Método de Reintrodução<br />Sensorial da Pisada<sup className="text-xl">®</sup>
+          </h2>
+          <p className="mt-6 text-lg text-foreground/75 leading-relaxed max-w-2xl mx-auto">
+            Não é mais um alongamento. Não é palmilha. É uma abordagem que atua na <strong className="text-[color:var(--forest)]">causa funcional</strong> — para o corpo sair do modo proteção.
           </p>
-          <div className="mt-8 rounded-xl border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 p-5 text-sm text-white/90 text-left">
-            ⚠️ Esta condição especial está disponível apenas durante o período do webinário. Após o encerramento da campanha, o acesso retorna ao preço regular. Os bônus exclusivos são liberados somente para quem adquirir durante este período.
+
+          <div className="mt-12 grid gap-4 md:grid-cols-3 text-left">
+            {[
+              { n: "01", t: "Vivências sensoriais", d: "Estímulos guiados que reeducam a percepção da pisada." },
+              { n: "02", t: "Carga progressiva", d: "Retorno gradual à caminhada, sem sobrecarga e sem medo." },
+              { n: "03", t: "Reorganização", d: "Novos padrões de movimento que se sustentam no tempo." },
+            ].map((s) => (
+              <div key={s.n} className="rounded-2xl bg-white border border-[color:var(--forest)]/10 p-6 hover:border-[color:var(--gold)]/50 transition-colors">
+                <div className="font-display text-2xl text-[color:var(--gold)]">{s.n}</div>
+                <div className="mt-2 font-display text-lg text-[color:var(--forest)]">{s.t}</div>
+                <p className="mt-2 text-sm text-foreground/70 leading-relaxed">{s.d}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* DRA SYLVIA — depoimento em destaque */}
+      <section className="relative">
+        <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+          <div className="grid gap-10 md:grid-cols-[1fr_1.3fr] items-center rounded-3xl bg-gradient-to-br from-[color:var(--sand)]/70 to-[color:var(--sand)]/30 p-6 md:p-12 border border-[color:var(--forest)]/10">
+            <div className="relative">
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-[color:var(--forest)] to-[color:var(--gold)]/50 blur-2xl opacity-40" />
+              <img
+                src={draSylvia}
+                alt="Dra. Sylvia"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="w-full rounded-2xl object-cover aspect-[4/5] shadow-xl"
+              />
+            </div>
+            <div>
+              <Eyebrow>Quem cuida de você</Eyebrow>
+              <h2 className="mt-4 font-display text-3xl md:text-4xl text-[color:var(--forest)]">
+                Dra. Sylvia
+              </h2>
+              <p className="mt-3 text-[color:var(--forest)]/70">Fisioterapeuta & Podóloga · Criadora do Método</p>
+
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2 text-[color:var(--forest)]/85">
+                <li className="flex gap-2 text-sm"><Check /><span><strong>23+ anos</strong> de clínica</span></li>
+                <li className="flex gap-2 text-sm"><Check /><span><strong>Centenas</strong> de pacientes</span></li>
+                <li className="flex gap-2 text-sm"><Check /><span>Metodologia própria</span></li>
+                <li className="flex gap-2 text-sm"><Check /><span>Prática real, não teoria</span></li>
+              </ul>
+
+              <figure className="mt-8 rounded-2xl bg-white p-6 border border-[color:var(--forest)]/10 shadow-sm">
+                <div className="text-4xl font-display text-[color:var(--gold)] leading-none">“</div>
+                <blockquote className="mt-2 italic text-[color:var(--forest)] leading-relaxed">
+                  Melhorei na primeira semana. Acordei sem aquela dor horrível e consegui caminhar o dia inteiro sem medo.
+                </blockquote>
+                <figcaption className="mt-3 text-xs uppercase tracking-widest text-[color:var(--forest)]/60">— Aluna do método</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OFERTA */}
+      <section id="oferta" className="relative py-20 md:py-28 overflow-hidden">
+        <div className="absolute -right-20 top-20 -z-10 h-96 w-96 rounded-full bg-[color:var(--gold)]/15 blur-3xl" />
+        <div className="absolute -left-20 bottom-20 -z-10 h-96 w-96 rounded-full bg-[color:var(--forest)]/10 blur-3xl" />
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <Eyebrow>O programa</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl text-[color:var(--forest)]">
+              Guia Sensorial da Fascite Plantar
+            </h2>
+            <p className="mt-4 text-lg text-foreground/70">Método completo de 14 dias · Aplicável em casa</p>
+          </div>
+
+          {/* Deliverables grid */}
+          <div className="mt-14 grid gap-4 md:grid-cols-2">
+            {[
+              { t: "E-book O Guia Sensorial", d: "O método passo a passo, aplicado na prática clínica." },
+              { t: "Módulo: Entendendo a Fascite", d: "O que realmente acontece no seu corpo." },
+              { t: "6 vivências sensoriais", d: "Reintrodução guiada da pisada." },
+              { t: "Guia de calçados e hábitos", d: "Evite os erros que mantêm a dor ativa." },
+              { t: "Plano de 14 dias", d: "Cronograma simples, sem perder o ritmo." },
+              { t: "Acesso vitalício", d: "No seu ritmo, quantas vezes precisar." },
+            ].map((i) => (
+              <div key={i.t} className="flex gap-4 rounded-2xl bg-white border border-[color:var(--forest)]/10 p-5">
+                <Check />
+                <div>
+                  <div className="font-display text-lg text-[color:var(--forest)]">{i.t}</div>
+                  <p className="text-sm text-foreground/70 mt-1">{i.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bônus */}
+          <div className="mt-20">
+            <div className="text-center">
+              <Eyebrow>Bônus exclusivos</Eyebrow>
+              <h3 className="mt-3 font-display text-2xl md:text-3xl text-[color:var(--forest)]">Liberados só nesta campanha</h3>
+            </div>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {[
+                { t: "Checklist diário", d: "O que fazer em cada etapa, sem dúvida." },
+                { t: "Erros que agravam", d: "O que evitar desde o dia 1." },
+                { t: "Voltar a caminhar", d: "Aula: recuperar confiança sem risco." },
+              ].map((b, i) => (
+                <div key={b.t} className="relative rounded-2xl border-2 border-[color:var(--gold)]/40 bg-gradient-to-b from-white to-[color:var(--sand)]/30 p-6">
+                  <div className="absolute -top-3 left-6 rounded-full bg-[color:var(--gold)] text-[color:var(--forest)] text-[10px] font-bold uppercase tracking-widest px-3 py-1">Bônus 0{i + 1}</div>
+                  <div className="mt-2 font-display text-lg text-[color:var(--forest)]">{b.t}</div>
+                  <p className="mt-2 text-sm text-foreground/70">{b.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Preço */}
+          <div className="mt-16 relative rounded-3xl border border-[color:var(--forest)]/15 bg-white p-8 md:p-12 shadow-xl overflow-hidden">
+            <div className="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-[color:var(--gold)]/20 blur-2xl" />
+            <div className="relative text-center">
+              <Eyebrow>Investimento</Eyebrow>
+              <div className="mt-6 flex items-baseline justify-center gap-1">
+                <span className="text-2xl text-foreground/50">R$</span>
+                <span className="font-display text-6xl md:text-8xl text-[color:var(--forest)] leading-none">168</span>
+                <span className="text-2xl text-[color:var(--forest)]/70">,00</span>
+              </div>
+              <p className="mt-2 text-sm text-foreground/60">ou parcelado no cartão</p>
+              <div className="mt-8 flex justify-center"><CTA>Quero começar meus 14 dias</CTA></div>
+              <p className="mt-4 text-xs text-foreground/60">Acesso imediato após confirmação</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GARANTIA */}
+      <section className="surface-forest relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_oklab,var(--gold)_25%,transparent),transparent_50%)]" />
+        <div className="relative mx-auto max-w-3xl px-6 py-20 md:py-24 text-center">
+          <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border-4 border-[color:var(--gold)] bg-[color:var(--forest)] shadow-2xl">
+            <div>
+              <div className="font-display text-4xl text-[color:var(--gold)] leading-none">7</div>
+              <div className="text-[10px] uppercase tracking-widest text-[color:var(--gold)]">dias</div>
+            </div>
+          </div>
+          <h2 className="mt-8 font-display text-3xl md:text-4xl text-[color:var(--sand)]">Garantia incondicional</h2>
+          <p className="mt-5 text-white/85 leading-relaxed max-w-xl mx-auto">
+            Acesse tudo. Aplique as primeiras vivências. Se não for pra você, devolvemos <strong className="text-[color:var(--gold)]">100%</strong> — sem perguntas, sem burocracia.
+          </p>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-6 py-20 md:py-28">
-        <h2 className="font-display text-3xl md:text-5xl text-[color:var(--forest)] text-center">Perguntas frequentes</h2>
-        <div className="mt-10 space-y-4">
+        <div className="text-center">
+          <Eyebrow>Dúvidas frequentes</Eyebrow>
+          <h2 className="mt-4 font-display text-3xl md:text-5xl text-[color:var(--forest)]">Tudo o que você precisa saber</h2>
+        </div>
+        <div className="mt-12 space-y-3">
           {[
-            { q: "O método funciona para quem já tem fascite plantar há muito tempo?", a: "Sim. Independentemente do tempo de dor, o corpo mantém capacidade de adaptação quando recebe os estímulos corretos. O método foi desenvolvido justamente para pessoas que já tentaram outras abordagens sem resultado duradouro." },
-            { q: "Preciso de equipamentos ou materiais especiais?", a: "Não. O método é aplicável em casa, sem equipamentos específicos. Tudo o que você precisa está explicado no guia." },
-            { q: "Quanto tempo por dia preciso dedicar?", a: "O programa foi desenvolvido para ser aplicado na rotina diária sem exigir horas de dedicação. Pequenas práticas progressivas ao longo dos 14 dias." },
-            { q: "O guia substitui o acompanhamento médico?", a: "O Guia Sensorial é um material educativo e de autocuidado baseado em prática clínica real. Ele não substitui avaliação ou acompanhamento profissional, mas complementa e aprofunda o entendimento sobre a sua condição." },
-            { q: "E se eu não conseguir seguir o cronograma de 14 dias?", a: "Você tem acesso vitalício ao conteúdo. Pode seguir no seu ritmo, revisitar os módulos quantas vezes precisar e retomar de onde parou sem perder nada." },
-            { q: "Tenho 7 dias de garantia mesmo acessando o conteúdo?", a: "Sim. A garantia é incondicional. Você pode acessar todo o material e, caso não esteja satisfeito, solicitar o reembolso dentro do prazo de 7 dias." },
+            { q: "Funciona pra quem tem fascite há muito tempo?", a: "Sim. Independentemente do tempo, o corpo mantém capacidade de adaptação com os estímulos certos." },
+            { q: "Preciso de equipamentos?", a: "Não. Tudo é aplicável em casa, sem materiais especiais." },
+            { q: "Quanto tempo por dia?", a: "Pequenas práticas progressivas — feitas pra caber na rotina real." },
+            { q: "Substitui médico?", a: "Não. É material educativo que complementa (não substitui) acompanhamento profissional." },
+            { q: "E se eu atrasar o cronograma?", a: "Acesso vitalício. Segue no seu ritmo, retoma de onde parou." },
+            { q: "A garantia vale mesmo acessando tudo?", a: "Sim. Incondicional em 7 dias, sem burocracia." },
           ].map((f) => (
-            <details key={f.q} className="group rounded-xl border border-[color:var(--forest)]/15 bg-white p-5">
+            <details key={f.q} className="group rounded-2xl border border-[color:var(--forest)]/15 bg-white p-5 open:shadow-md transition-shadow">
               <summary className="cursor-pointer list-none flex items-start justify-between gap-4 font-medium text-[color:var(--forest)]">
                 <span className="flex-1">{f.q}</span>
                 <span className="text-[color:var(--gold)] transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
               </summary>
-              <p className="mt-3 text-foreground/80 leading-relaxed">{f.a}</p>
+              <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{f.a}</p>
             </details>
           ))}
         </div>
       </section>
 
-      {/* Fechamento */}
-      <section className="surface-sand">
-        <div className="mx-auto max-w-3xl px-6 py-20 md:py-28 text-center">
-          <h2 className="font-display text-3xl md:text-5xl text-[color:var(--forest)]">Você não precisa aprender a conviver com essa dor.</h2>
-          <div className="mt-6 space-y-4 text-lg text-[color:var(--forest)]/85 leading-relaxed">
-            <p>Você não precisa começar cada manhã com medo de colocar o pé no chão. E você não precisa depender para sempre de remédios que apenas mascaram o problema.</p>
-            <p>Seu corpo pode reaprender a caminhar.</p>
-            <p>Existe um caminho para sair desse ciclo — e ele começa com entender o que está realmente acontecendo. O Guia Sensorial foi criado para mostrar esse caminho, de forma simples, segura e acessível.</p>
-          </div>
+      {/* FECHAMENTO */}
+      <section className="surface-sand relative overflow-hidden">
+        <div className="absolute -left-16 -top-16 h-72 w-72 rounded-full bg-[color:var(--gold)]/20 blur-3xl" />
+        <div className="absolute -right-16 -bottom-16 h-72 w-72 rounded-full bg-[color:var(--forest)]/10 blur-3xl" />
+        <div className="relative mx-auto max-w-3xl px-6 py-20 md:py-28 text-center">
+          <h2 className="font-display text-3xl md:text-5xl text-[color:var(--forest)] leading-tight">
+            Você não precisa <em className="italic text-[color:var(--gold)]">aprender a conviver</em> com essa dor.
+          </h2>
+          <p className="mt-6 text-lg text-[color:var(--forest)]/80 leading-relaxed max-w-xl mx-auto">
+            Seu corpo pode reaprender. Existe um caminho — simples, seguro e acessível — pra sair do ciclo.
+          </p>
           <div className="mt-10 flex justify-center"><CTA /></div>
         </div>
       </section>
 
       <footer className="surface-forest">
-        <div className="mx-auto max-w-5xl px-6 py-10 text-center text-sm text-white/70">
-          © Dra. Sylvia · Guia Sensorial da Fascite Plantar · Todos os direitos reservados<br />
-          Garantia de 7 dias · Acesso imediato após a confirmação do pagamento · Conteúdo digital — acesso vitalício
+        <div className="mx-auto max-w-5xl px-6 py-10 text-center text-xs md:text-sm text-white/70 leading-relaxed">
+          © Dra. Sylvia · Guia Sensorial da Fascite Plantar<br />
+          Garantia de 7 dias · Acesso imediato · Conteúdo digital vitalício
         </div>
       </footer>
     </div>
