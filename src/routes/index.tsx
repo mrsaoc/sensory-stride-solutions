@@ -56,23 +56,29 @@ function SalesPage() {
           <img
             src={draSylviaGreen.url}
             alt="Dra. Sylvia, fisioterapeuta e podóloga"
-            className="w-full h-full object-cover object-[65%_center] md:object-[75%_center]"
+            className="w-full h-full object-cover object-[55%_center] md:object-[70%_center]"
           />
           {/* Gradient overlays for legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--forest)]/95 via-[color:var(--forest)]/75 to-transparent md:from-[color:var(--forest)]/92 md:via-[color:var(--forest)]/55 md:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--forest)]/60 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--forest)] via-[color:var(--forest)]/80 to-transparent md:from-[color:var(--forest)]/95 md:via-[color:var(--forest)]/65 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--forest)]/80 via-transparent to-[color:var(--forest)]/30" />
         </div>
 
         <div className="mx-auto max-w-6xl w-full px-6 py-20 md:py-28">
           <div className="max-w-2xl">
             <Eyebrow>Método Sensorial da Pisada®</Eyebrow>
-            <h1 className="mt-6 font-display text-[2.4rem] leading-[1.05] md:text-6xl md:leading-[1.02] text-[color:var(--sand)]">
+            <h1
+              className="mt-6 font-display text-[2.4rem] leading-[1.05] md:text-6xl md:leading-[1.02] text-[color:var(--sand)]"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            >
               Sua <em className="italic text-[color:var(--gold)]">fascite plantar</em> não é só inflamação.
               <span className="block mt-3 font-display italic text-2xl md:text-3xl text-white/85">
                 É um ciclo, e ele pode ser interrompido.
               </span>
             </h1>
-            <p className="mt-7 max-w-xl text-base md:text-lg text-white/85 leading-relaxed">
+            <p
+              className="mt-7 max-w-xl text-base md:text-lg text-white/90 leading-relaxed"
+              style={{ textShadow: "0 1px 16px rgba(0,0,0,0.35)" }}
+            >
               Reduza a dor da primeira pisada em até{" "}
               <strong className="text-[color:var(--gold)]"><Num>14</Num> dias</strong>, com o método que ajudou centenas de pessoas a caminharem de novo, sem medo e sem remédio contínuo.
             </p>
