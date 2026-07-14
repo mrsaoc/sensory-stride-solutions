@@ -63,7 +63,7 @@ function SalesPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--forest)]/80 via-transparent to-[color:var(--forest)]/30" />
         </div>
 
-        <div className="mx-auto max-w-6xl w-full px-6 py-20 md:py-28">
+        <div className="relative z-10 mx-auto max-w-6xl w-full px-6 py-20 md:py-28">
           <div className="max-w-2xl">
             <Eyebrow>Método Sensorial da Pisada®</Eyebrow>
             <h1
