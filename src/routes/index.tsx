@@ -52,7 +52,7 @@ function SalesPage() {
       {/* HERO — full-width com foto integrada */}
       <header className="relative min-h-[92vh] flex items-center overflow-hidden">
         {/* Background photo, full-bleed */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <img
             src={draSylviaGreen.url}
             alt="Dra. Sylvia, fisioterapeuta e podóloga"
