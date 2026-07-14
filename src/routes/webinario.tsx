@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+
 
 export const Route = createFileRoute("/webinario")({
   head: () => ({
@@ -20,8 +21,10 @@ const Check = () => (
 );
 
 function CapturaPage() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ nome: "", email: "", whatsapp: "" });
   const [sent, setSent] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -53,8 +56,9 @@ function CapturaPage() {
                 <h2 className="font-display text-2xl text-[color:var(--forest)]">Reserve sua vaga gratuita</h2>
                 <p className="mt-2 text-sm text-foreground/70">Preencha seus dados para receber o link.</p>
                 <form
-                  onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                  onSubmit={(e) => { e.preventDefault(); setSent(true); setTimeout(() => navigate({ to: "/obrigado" }), 900); }}
                   className="mt-6 space-y-4"
+
                 >
                   <div>
                     <label className="text-xs font-medium text-[color:var(--forest)]">Nome completo</label>
@@ -82,8 +86,9 @@ function CapturaPage() {
               <div className="text-center py-8">
                 <div className="mx-auto h-14 w-14 rounded-full surface-sand flex items-center justify-center text-[color:var(--forest)] text-2xl">✓</div>
                 <h3 className="mt-4 font-display text-2xl text-[color:var(--forest)]">Vaga reservada!</h3>
-                <p className="mt-2 text-sm text-foreground/70">Redirecionando para o WhatsApp…</p>
-                <a href="/obrigado" className="mt-6 inline-block btn-primary btn-primary-hover">Continuar →</a>
+                <p className="mt-2 text-sm text-foreground/70">Redirecionando…</p>
+                <Link to="/obrigado" className="mt-6 inline-block btn-primary btn-primary-hover">Continuar →</Link>
+
               </div>
             )}
           </div>

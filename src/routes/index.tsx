@@ -1,6 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import draSylviaGreen from "@/assets/dra-sylvia-green.jpg.asset.json";
 import draSylviaPortrait from "@/assets/dra-sylvia-portrait.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,15 +17,16 @@ export const Route = createFileRoute("/")({
   component: SalesPage,
 });
 
-const CTA = ({ children = "Quero começar meus 14 dias", small = false }: { children?: string; small?: boolean }) => (
-  <a
-    href="#oferta"
+const CTA = ({ children = "Quero começar meus 14 dias", small = false, to = "/webinario" }: { children?: string; small?: boolean; to?: string }) => (
+  <Link
+    to={to}
     className={`btn-primary btn-primary-hover whitespace-nowrap ${small ? "text-sm px-6 py-3" : "text-base md:text-lg"}`}
   >
     <span>{children}</span>
     <span aria-hidden className="ml-1">→</span>
-  </a>
+  </Link>
 );
+
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.28em] font-semibold text-[color:var(--gold)]">
@@ -317,7 +319,7 @@ function SalesPage() {
                 <Num className="text-2xl text-[color:var(--forest)]/70">,00</Num>
               </div>
               <p className="mt-2 text-sm text-foreground/60">ou parcelado no cartão</p>
-              <div className="mt-8 flex justify-center"><CTA>Quero começar meus 14 dias</CTA></div>
+              <div className="mt-8 flex justify-center"><CTA to="/obrigado">Quero começar meus 14 dias</CTA></div>
               <p className="mt-4 text-xs text-foreground/60">Acesso imediato após confirmação</p>
             </div>
           </div>
