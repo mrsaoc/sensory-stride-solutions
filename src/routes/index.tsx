@@ -319,7 +319,7 @@ function SalesPage() {
                 <Num className="text-2xl text-[color:var(--forest)]/70">,00</Num>
               </div>
               <p className="mt-2 text-sm text-foreground/60">ou parcelado no cartão</p>
-              <div className="mt-8 flex justify-center"><CTA>Quero começar meus 14 dias</CTA></div>
+              <div className="mt-8 flex justify-center"><CTA to="/obrigado">Quero começar meus 14 dias</CTA></div>
               <p className="mt-4 text-xs text-foreground/60">Acesso imediato após confirmação</p>
             </div>
           </div>
