@@ -56,8 +56,9 @@ function CapturaPage() {
                 <h2 className="font-display text-2xl text-[color:var(--forest)]">Reserve sua vaga gratuita</h2>
                 <p className="mt-2 text-sm text-foreground/70">Preencha seus dados para receber o link.</p>
                 <form
-                  onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                  onSubmit={(e) => { e.preventDefault(); setSent(true); setTimeout(() => navigate({ to: "/obrigado" }), 900); }}
                   className="mt-6 space-y-4"
+
                 >
                   <div>
                     <label className="text-xs font-medium text-[color:var(--forest)]">Nome completo</label>
