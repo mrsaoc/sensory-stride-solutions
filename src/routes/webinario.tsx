@@ -21,8 +21,10 @@ const Check = () => (
 );
 
 function CapturaPage() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ nome: "", email: "", whatsapp: "" });
   const [sent, setSent] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-background">
