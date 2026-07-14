@@ -86,8 +86,9 @@ function CapturaPage() {
               <div className="text-center py-8">
                 <div className="mx-auto h-14 w-14 rounded-full surface-sand flex items-center justify-center text-[color:var(--forest)] text-2xl">✓</div>
                 <h3 className="mt-4 font-display text-2xl text-[color:var(--forest)]">Vaga reservada!</h3>
-                <p className="mt-2 text-sm text-foreground/70">Redirecionando para o WhatsApp…</p>
-                <a href="/obrigado" className="mt-6 inline-block btn-primary btn-primary-hover">Continuar →</a>
+                <p className="mt-2 text-sm text-foreground/70">Redirecionando…</p>
+                <Link to="/obrigado" className="mt-6 inline-block btn-primary btn-primary-hover">Continuar →</Link>
+
               </div>
             )}
           </div>
