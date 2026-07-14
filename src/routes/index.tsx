@@ -17,15 +17,16 @@ export const Route = createFileRoute("/")({
   component: SalesPage,
 });
 
-const CTA = ({ children = "Quero começar meus 14 dias", small = false }: { children?: string; small?: boolean }) => (
-  <a
-    href="#oferta"
+const CTA = ({ children = "Quero começar meus 14 dias", small = false, to = "/webinario" }: { children?: string; small?: boolean; to?: string }) => (
+  <Link
+    to={to}
     className={`btn-primary btn-primary-hover whitespace-nowrap ${small ? "text-sm px-6 py-3" : "text-base md:text-lg"}`}
   >
     <span>{children}</span>
     <span aria-hidden className="ml-1">→</span>
-  </a>
+  </Link>
 );
+
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.28em] font-semibold text-[color:var(--gold)]">
