@@ -56,8 +56,9 @@ function SalesPage() {
           <img
             src={draSylviaGreen.url}
             alt="Dra. Sylvia, fisioterapeuta e podóloga"
-            className="w-full h-full object-cover object-[55%_center] md:object-[70%_center]"
+            className="w-full h-full object-cover object-[55%_top] md:object-[70%_top] scale-[1.05]"
           />
+
           {/* Gradient overlays for legibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--forest)] via-[color:var(--forest)]/80 to-transparent md:from-[color:var(--forest)]/95 md:via-[color:var(--forest)]/65 md:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--forest)]/80 via-transparent to-[color:var(--forest)]/30" />
