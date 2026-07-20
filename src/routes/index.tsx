@@ -74,10 +74,12 @@ function SalesPage() {
               style={{ textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
             >
               Sua <em className="italic text-[color:var(--gold)]">fascite plantar</em> não é só inflamação.
-              <span className="block mt-3 font-display italic text-2xl md:text-3xl text-white/85">
-                É um ciclo, e ele pode ser interrompido.
-              </span>
             </h1>
+            <p className="mt-3 font-sans text-xl md:text-2xl font-light text-white/85 leading-snug"
+              style={{ textShadow: "0 1px 16px rgba(0,0,0,0.35)" }}
+            >
+              É um ciclo, e ele pode ser interrompido.
+            </p>
             <p
               className="mt-7 max-w-xl text-base md:text-lg text-white/90 leading-relaxed"
               style={{ textShadow: "0 1px 16px rgba(0,0,0,0.35)" }}
